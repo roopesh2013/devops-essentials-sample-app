@@ -13,7 +13,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withCredentials([string(credentialsId: 'root', variable: 'root')]) {
+                withCredentials([string(credentialsId: 'deploy_id', variable: 'pass')]) {
                     sshPublisher(
                         failOnError: true,
                         publishers: [
@@ -21,6 +21,7 @@ pipeline {
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: 'root',
+                                    encryptedPassphrase: "$pass"
                                  
                                 ], 
                                 transfers: [
