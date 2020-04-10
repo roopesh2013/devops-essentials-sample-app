@@ -13,15 +13,15 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withCredentials([string(credentialsId: 'deploy_id', variable: 'pass')]) {
+                withCredentials([UsernamePassword(credentialsId: 'ssh-pass',usernameVariable:'USERNAME' passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
                         publishers: [
                             sshPublisherDesc(
                                 configName: 'build-server',
                                 sshCredentials: [
-                                    username: 'root',
-                                    encryptedPassphrase: "$pass"
+                                    username: '$USERNAME',
+                                    encryptedPassphrase: "$USERPASS"
                                  
                                 ], 
                                 transfers: [
