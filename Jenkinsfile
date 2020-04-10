@@ -18,7 +18,7 @@ pipeline {
                         failOnError: true,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'staging',
+                                configName: 'ansible-node',
                                 sshCredentials: [
                                     username: 'root',
                                     encryptedPassphrase: "$pass"
@@ -48,7 +48,7 @@ pipeline {
                         failOnError: true,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'production',
+                                configName: 'ansible-node',
                                 sshCredentials: [
                                     username: 'root'
                                    
